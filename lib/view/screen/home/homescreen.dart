@@ -20,7 +20,7 @@ class homescreen extends StatelessWidget {
               drawwer(),
              requirebar(),
               Divider(),
-              userpostdatasList(),
+              userpostdatasList(context),
             ],
           ),
         ));

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:job_socio/view/screen/messegescreen/messegescreen.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
 import 'package:job_socio/view/widgets/userpost.dart';
@@ -29,7 +31,9 @@ Widget drawwer() {
             child: CircleAvatar(
               backgroundColor: gy.withOpacity(0.3),
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => messegeScreen());
+                  },
                   icon: Icon(
                     Icons.message,
                     color: bl,
@@ -57,14 +61,14 @@ Widget drawwer() {
   );
 }
 
-Widget userpostdatasList() {
+Widget userpostdatasList(BuildContext context) {
   return Container(
       height: 80.h,
       width: 100.w,
       //   color: gy.withOpacity(0.3),
       child: ListView.separated(
           itemBuilder: (context, index) {
-            return userpostimage();
+            return userpostimage(context);
           },
           separatorBuilder: (context, index) {
             return SizedBox();

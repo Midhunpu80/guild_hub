@@ -1,10 +1,13 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
+import 'package:job_socio/view/widgets/comments.dart';
 import 'package:job_socio/view/widgets/drawer.dart';
 import 'package:sizer/sizer.dart';
 
-Widget userpostimage() {
+Widget userpostimage(BuildContext context) {
   return Card(
     child: Container(
       height: 61.h,
@@ -23,7 +26,7 @@ Widget userpostimage() {
             width: 100.w,
             color: yl,
           ),
-          like_and_commentbar(),
+          like_and_commentbar(context),
           descriptionbar(),
         ],
       ),
@@ -31,7 +34,7 @@ Widget userpostimage() {
   );
 }
 
-like_and_commentbar() {
+like_and_commentbar(BuildContext context) {
   return Container(
     height: 7.h,
     color: wh,
@@ -68,7 +71,9 @@ like_and_commentbar() {
                   radius: 19,
                   backgroundColor: gy.withOpacity(0.3),
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        comments(context: context);
+                      },
                       icon: Icon(
                         Icons.messenger_outline_outlined,
                         size: 2.h,
