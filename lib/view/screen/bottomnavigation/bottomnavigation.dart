@@ -6,13 +6,14 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:job_socio/main.dart';
 import 'package:job_socio/view/screen/communityscreen/communityscreen.dart';
 import 'package:job_socio/view/screen/home/homescreen.dart';
+import 'package:job_socio/view/utility/colors.dart';
 
 import 'package:sizer/sizer.dart';
 
 class bottomnavscreen extends StatelessWidget {
   dynamic pages = [
     const homescreen(),
-    const homescreen(),
+ communityscreen(),
     const homescreen(),
     communityscreen(),
   ];
@@ -41,9 +42,9 @@ class bottomnavscreen extends StatelessWidget {
                         bottomct.changeindex(value);
                       },
                       tabBorderRadius: 12,
-                      color: Colors.brown,
+                      color: pp,
                       selectedIndex: bottomct.index.value,
-                      backgroundColor: Colors.blue,
+                      backgroundColor: gy.withOpacity(0.3),
                       tabs: const [
                         GButton(icon: Icons.home),
                         GButton(icon: Icons.people_outline_rounded),

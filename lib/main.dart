@@ -10,7 +10,6 @@ void main() {
 
 final bottomct = Get.put(bottomcontroller());
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
