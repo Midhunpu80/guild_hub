@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:job_socio/view/screen/requirementscreen/reuirementscreen.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
 import 'package:sizer/sizer.dart';
 
+List reqdata = ["requirement", "createReq", "Hope", "Sa", "Rock"];
 Widget requirebar() {
   return Container(
     height: 15.h,
@@ -17,20 +20,27 @@ Widget requirebar() {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Container(
-                    height: 9.h,
-                    width: 19.w,
-                    decoration: BoxDecoration(
-                        color: yl,
-                        borderRadius: BorderRadius.circular(10.h),
-                        border: Border.all(width: 1, color: bl)),
+                  InkWell(
+                    onTap: () {
+                      if (index == 0) {
+                        Get.to(() => reuirementscreen());
+                      }
+                    },
+                    child: Container(
+                      height: 9.h,
+                      width: 19.w,
+                      decoration: BoxDecoration(
+                          color: yl,
+                          borderRadius: BorderRadius.circular(10.h),
+                          border: Border.all(width: 1, color: bl)),
+                    ),
                   ),
                   SizedBox(
                     height: 1.h,
                   ),
                   SizedBox(
                     child: alltext(
-                        txt: "Requirements",
+                        txt: reqdata[index],
                         col: bl,
                         siz: 8.sp,
                         wei: FontWeight.bold,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_socio/view/utility/alltext.dart';
+import 'package:job_socio/view/utility/buttons.dart';
 import 'package:job_socio/view/utility/colors.dart';
 import 'package:job_socio/view/widgets/usersList.dart';
 import 'package:sizer/sizer.dart';
@@ -12,22 +13,11 @@ class messegeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.notifications_active,
-                color: wh,
-              )),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.settings,
-                color: wh,
-              )),
+         notificationbutton(),settingsbutton()
         ],
         title: alltext(
             txt: "Contacts", col: bl, siz: 13.sp, wei: FontWeight.w400, max: 1),
-        backgroundColor: blu,
+        backgroundColor: wh,
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:job_socio/controller/bottomcontroller.dart';
+import 'package:job_socio/controller/protabcontroller.dart';
 import 'package:job_socio/view/screen/bottomnavigation/bottomnavigation.dart';
 import 'package:sizer/sizer.dart';
 
@@ -9,6 +10,8 @@ void main() {
 }
 
 final bottomct = Get.put(bottomcontroller());
+final procontroll = Get.put(protabcontroller());
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

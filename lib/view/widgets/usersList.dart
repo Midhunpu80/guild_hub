@@ -7,7 +7,7 @@ import 'package:sizer/sizer.dart';
 
 Widget allusersList() {
   return Container(
-    height: 90.h,
+    height: 80.h,
     width: 100.w,
     child: ListView.separated(
         itemBuilder: (context, index) {
@@ -16,7 +16,7 @@ Widget allusersList() {
             width: 100.w,
             child: ListTile(
               onTap: () {
-                Get.to(() => messegeview_screen()); 
+                Get.to(() => messegeview_screen());
               },
               trailing: Icon(
                 Icons.camera_alt_outlined,
@@ -36,7 +36,7 @@ Widget allusersList() {
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox();
+          return Divider();
         },
         itemCount: 25),
   );

@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:job_socio/main.dart';
+import 'package:job_socio/view/screen/cateogeory/cateogoeryscreen.dart';
 import 'package:job_socio/view/screen/communityscreen/communityscreen.dart';
 import 'package:job_socio/view/screen/home/homescreen.dart';
+import 'package:job_socio/view/screen/prouser_profilescreen/pro_userprofilescreen.dart';
 import 'package:job_socio/view/utility/colors.dart';
 
 import 'package:sizer/sizer.dart';
@@ -13,9 +15,9 @@ import 'package:sizer/sizer.dart';
 class bottomnavscreen extends StatelessWidget {
   dynamic pages = [
     const homescreen(),
- communityscreen(),
-    const homescreen(),
     communityscreen(),
+    cateogeoryscreen(),
+   homescreen()
   ];
   @override
   Widget build(BuildContext context) {
