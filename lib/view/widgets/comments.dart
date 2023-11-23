@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:job_socio/main.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
 import 'package:sizer/sizer.dart';
 
-comments({required BuildContext context}) {
+commentsmessenger( BuildContext? context,) {
   return showBottomSheet(
-      context: context,
+      context: context!,
       builder: (context) {
         return SafeArea(
           child: Container(
             height: 95.h,
             width: 100.w,
-        
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -36,7 +36,7 @@ comments({required BuildContext context}) {
                         max: 1),
                   ),
                   Divider(),
-                  showcommentsList(),
+                 showcommentsList(ind:0 ),
                   sendcomment()
                 ],
               ),
@@ -79,7 +79,7 @@ sendcomment() {
   );
 }
 
-showcommentsList() {
+showcommentsList({required var ind}) {
   return Container(
     height: 65.h,
     width: 100.w,
@@ -91,15 +91,13 @@ showcommentsList() {
               radius: 2.h,
             ),
             title: alltext(
-                txt: "now bigger ",
+                txt: question_controll.allquestionList[index]["name"],
                 col: bl,
                 siz: 9.sp,
                 wei: FontWeight.w600,
                 max: 1),
             subtitle: alltext(
-                txt:
-                    "now bigger the can i do some more better i do m y live slife can go them try make all of them in the past way innot  " *
-                        200,
+                txt: question_controll.reply.comments[index].content.toString(),
                 col: bl,
                 siz: 7.sp,
                 wei: FontWeight.w500,
@@ -109,6 +107,6 @@ showcommentsList() {
         separatorBuilder: (context, index) {
           return SizedBox();
         },
-        itemCount: 5),
+        itemCount: question_controll.comments.length),
   );
 }

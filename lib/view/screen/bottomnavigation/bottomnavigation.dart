@@ -13,16 +13,17 @@ import 'package:job_socio/view/utility/colors.dart';
 import 'package:sizer/sizer.dart';
 
 class bottomnavscreen extends StatelessWidget {
-  dynamic pages = [
-    const homescreen(),
+  dynamic one;
+  List pages = [
+    homescreen(),
     communityscreen(),
     cateogeoryscreen(),
-   homescreen()
+    homescreen()
   ];
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: wh,
           bottomNavigationBar: Stack(
             children: [
               pages[bottomct.index.value],
@@ -42,6 +43,8 @@ class bottomnavscreen extends StatelessWidget {
                       tabBackgroundColor: Colors.transparent,
                       onTabChange: (value) {
                         bottomct.changeindex(value);
+                        question_controll.getquesions();
+                        // getposts_controll.getposts_services();
                       },
                       tabBorderRadius: 12,
                       color: pp,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:job_socio/main.dart';
 
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/buttons.dart';
@@ -35,21 +37,74 @@ Widget drawwer() {
 }
 
 Widget userpostdatasList(BuildContext context) {
-  return Container(
-      height: 80.h,
-      width: 100.w,
-      //   color: gy.withOpacity(0.3),
-      child: ListView.separated(
-          itemBuilder: (context, index) {
-            return userpostimage(context);
-          },
-          separatorBuilder: (context, index) {
-            return SizedBox();
-          },
-          itemCount: 15));
+  return Obx(
+    () => getposts_controll.isLoading.value
+        ? const Center(child: CircularProgressIndicator())
+        : SizedBox(
+            height: 80.h,
+            width: 100.w,
+            //   color: gy.withOpacity(0.3),
+            child: ListView.separated(
+              itemCount: getposts_controll.reply.post.length,
+              itemBuilder: (context, index) {
+                 final snap = getposts_controll.reply.post[index];
+                //  final snap2 = getposts_controll.reply.users[index];
+                // final snap3 = getposts_controll.reply.message[index];
+
+                return Card(
+                  child: Container(
+                    height: 61.h,
+                    decoration: BoxDecoration(color: wh, boxShadow: [
+                      BoxShadow(
+                          offset: Offset.zero,
+                          blurRadius: 5.5,
+                          spreadRadius: 5,
+                          color: gy.withOpacity(0.3))
+                    ]),
+                    child: Column(
+                      children: [
+                        posthead(
+                            index: index,
+                            type: getposts_controll.reply.pros[index].category
+                                .toString(),
+                            name: getposts_controll.reply.pros[index].name
+                                .toString()),
+                        SizedBox(
+                          height: 35.h,
+                          width: 100.w,
+                          child: Image.network(
+                              "${snap.image[0].toString()}"),
+                          // decoration: BoxDecoration(
+
+                          //     image: DecorationImage(
+                          //         image: NetworkImage(getposts_controll.reply.post[index].image.toString()))),
+                        ),
+                        like_and_commentbar(
+                          context: context,
+                          ind: index,
+                          likes: getposts_controll
+                              .reply.post[index].likes.length
+                              .toString(),
+                          commentsa: getposts_controll
+                              .reply.comments[index].content.length
+                              .toString(),
+                        ),
+                        descriptionbar(
+                            des: getposts_controll.reply.post[index].message
+                                .toString()),
+                      ],
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox();
+              },
+            )),
+  );
 }
 
-Widget posthead() {
+Widget posthead({required var index, required var name, required var type}) {
   return Container(
       height: 8.h,
       width: 100.w,
@@ -62,13 +117,13 @@ Widget posthead() {
           backgroundColor: bl,
         ),
         title: alltext(
-            txt: "midhun pu",
+            txt: name.toString(),
             col: bl,
             siz: 12.sp,
             wei: FontWeight.w600,
             max: 1),
         subtitle: alltext(
-            txt: "contractor",
+            txt: type.toString(),
             col: bl,
             siz: 8.sp,
             wei: FontWeight.w400,

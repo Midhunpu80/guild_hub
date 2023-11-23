@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:job_socio/main.dart';
 import 'package:job_socio/view/screen/requirementscreen/reuirementscreen.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
@@ -13,7 +14,7 @@ Widget requirebar() {
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(5),
     ),
-    child: ListView.separated(
+    child:  Obx(() =>  procontroll.gropdata.value==2?Container(height: 10.h,width: 100.w,color: gr,): ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
@@ -53,5 +54,5 @@ Widget requirebar() {
           return SizedBox();
         },
         itemCount: 5),
-  );
+   ) );
 }

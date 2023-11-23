@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:job_socio/main.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
@@ -107,7 +106,7 @@ Widget posts(Color col) {
               height: 40.h,
               width: 100.w,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2.h), color: col),
+                  borderRadius: BorderRadius.circular(1.h), color: col),
             );
           }),
     ),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:job_socio/main.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
 askquestionsheet(BuildContext context) {
+  TextEditingController question_cont = TextEditingController();
   return showDialog(
       context: context,
       builder: (context) {
@@ -39,22 +42,29 @@ askquestionsheet(BuildContext context) {
                   SizedBox(
                     height: 4.h,
                   ),
-                  textfield(),
+                  textfield(controller: question_cont),
                   SizedBox(
                     height: 4.h,
                   ),
-                  Container(
-                    height: 6.h,
-                    width: 65.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(1.h), color: or),
-                    child: Center(
-                      child: alltext(
-                          txt: "Post Now",
-                          col: wh,
-                          siz: 12.sp,
-                          wei: FontWeight.bold,
-                          max: 1),
+                  InkWell(
+                    onTap: () {
+                      question_controll.uploadquestions(
+                          messege: question_cont.text.toString());
+                      Get.back();
+                    },
+                    child: Container(
+                      height: 6.h,
+                      width: 65.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(1.h), color: or),
+                      child: Center(
+                        child: alltext(
+                            txt: "Post Now",
+                            col: wh,
+                            siz: 12.sp,
+                            wei: FontWeight.bold,
+                            max: 1),
+                      ),
                     ),
                   )
                 ],
@@ -65,10 +75,11 @@ askquestionsheet(BuildContext context) {
       });
 }
 
-Widget textfield() {
+Widget textfield({required TextEditingController controller}) {
   return SizedBox(
     width: 65.w,
     child: TextFormField(
+      controller: controller,
       keyboardType: TextInputType.multiline,
       maxLines: null,
       decoration: const InputDecoration(

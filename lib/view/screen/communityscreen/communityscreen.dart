@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:job_socio/main.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
 import 'package:job_socio/view/widgets/askquestion.dart';
@@ -21,20 +23,24 @@ class communityscreen extends StatelessWidget {
               txt: "Ask Q?", col: bl, siz: 12.sp, wei: FontWeight.bold, max: 1),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 4.h,
-              width: 20.w,
-            ),
-            header(tit: "Community"),
-            communitypost(),
-            SizedBox(
-              height: 30.h,
-            ),
-          ],
-        ),
+      body: Obx(
+        () => question_controll.allquestionList.value.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 4.h,
+                      width: 20.w,
+                    ),
+                    header(tit: "Community"),
+                    communitypost(),
+                    SizedBox(
+                      height: 30.h,
+                    ),
+                  ],
+                ),
+              ),
       ),
     );
   }

@@ -10,7 +10,7 @@ class messegeview_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( 
         actions: const [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -59,7 +59,7 @@ class messegeview_screen extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: index.isEven
                           ? Container(
-                            height: 2.h,
+                              height: 2.h,
                               margin: EdgeInsets.only(left: 30.h),
                               decoration: BoxDecoration(
                                   color: yl,

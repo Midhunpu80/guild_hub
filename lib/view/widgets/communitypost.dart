@@ -1,8 +1,12 @@
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:job_socio/main.dart';
+import 'package:job_socio/view/constant/constants.dart';
 
 import 'package:job_socio/view/utility/colors.dart';
+import 'package:job_socio/view/widgets/deleteQuestion.dart';
 import 'package:job_socio/view/widgets/userpost.dart';
-import 'package:expandable_text/expandable_text.dart';
+
 import 'package:sizer/sizer.dart';
 
 communitypost() {
@@ -15,6 +19,8 @@ communitypost() {
         color: pp.withOpacity(0.3)),
     child: ListView.separated(
         itemBuilder: (context, index) {
+          final snap = question_controll.allquestionList[index];
+
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
@@ -24,9 +30,16 @@ communitypost() {
                     padding: EdgeInsets.only(top: 1.h),
                     child: ListTile(
                         trailing: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (  userid == snap["id"]){
+                              deleteandreport_question(context,index);
+                              
+                              }
+                            },
                             icon: Icon(
-                              Icons.more_vert_outlined,
+                              userid == snap["id"]
+                                  ? Icons.more_vert_outlined
+                                  : Icons.account_circle,
                               color: bl,
                             )),
                         leading: CircleAvatar(
@@ -36,12 +49,16 @@ communitypost() {
                           text: TextSpan(
                             style: DefaultTextStyle.of(context).style,
                             children: <TextSpan>[
-                              const TextSpan(
-                                  text: 'Midhun pu ',
+                              TextSpan(
+                                  text: question_controll.allquestionList[index]
+                                          ["name"]
+                                      .toString(),
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold)),
                               TextSpan(
-                                  text: 'Thrissur',
+                                  text: question_controll.allquestionList[index]
+                                          ["loaction"]
+                                      .toString(),
                                   style: TextStyle(
                                       fontSize: 11.sp,
                                       fontWeight: FontWeight.w500,
@@ -59,8 +76,7 @@ communitypost() {
                           children: [
                             Center(
                               child: ExpandableText(
-                                "the dentist not cry why its not the last i am beleive my aself take car " *
-                                    120,
+                                snap["messege"].toString().toString(),
                                 expandText: 'show more',
                                 collapseText: 'show less',
                                 maxLines: 8,
@@ -79,7 +95,15 @@ communitypost() {
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(2.h),
                           bottomRight: Radius.circular(2.h)),
-                      child: like_and_commentbar(context)),
+                      child: like_and_commentbar(
+                          context: context,
+                          ind: index,
+                          likes: question_controll.allquestionList[index]
+                                  ["likes"]
+                              .toString(),
+                          commentsa: question_controll.allquestionList[index]
+                                  ["comments"]
+                              .toString())),
                 ],
               ),
             ),
@@ -88,6 +112,6 @@ communitypost() {
         separatorBuilder: (context, index) {
           return SizedBox();
         },
-        itemCount: 15),
+        itemCount: question_controll.allquestionList.length),
   );
 }

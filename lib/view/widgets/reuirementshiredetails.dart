@@ -5,7 +5,12 @@ import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
 import 'package:sizer/sizer.dart';
 
-reuirement_hire_details(BuildContext context) {
+reuirement_hire_details(BuildContext context,
+    {required var budget,
+    required var location,
+    required var person,
+    required var intrested,
+    required var messege}) {
   return showBottomSheet(
       context: context,
       builder: (context) {
@@ -46,8 +51,7 @@ reuirement_hire_details(BuildContext context) {
                         height: 10.h,
                         width: 90.w,
                         child: alltext(
-                            txt:
-                                "Need A Experianced Architechtural Home Designer Near Vembayam trivandram",
+                            txt: messege,
                             col: bl,
                             siz: 15.sp,
                             wei: FontWeight.bold,
@@ -63,7 +67,7 @@ reuirement_hire_details(BuildContext context) {
                         color: bl,
                       ),
                       label: alltext(
-                          txt: "Budget:80000",
+                          txt: "Budget:${budget.toString()}",
                           col: bl,
                           siz: 11.sp,
                           wei: FontWeight.w500,
@@ -75,7 +79,7 @@ reuirement_hire_details(BuildContext context) {
                         color: bl,
                       ),
                       label: alltext(
-                          txt: "Location:Thrissur,Kerala,India",
+                          txt: "Location:${location},Kerala,India",
                           col: bl,
                           siz: 11.sp,
                           wei: FontWeight.w500,
@@ -87,7 +91,7 @@ reuirement_hire_details(BuildContext context) {
                         color: bl,
                       ),
                       label: alltext(
-                          txt: "Posted By :Midhun pu",
+                          txt: "Posted By :${person}",
                           col: bl,
                           siz: 11.sp,
                           wei: FontWeight.w500,
@@ -114,7 +118,7 @@ reuirement_hire_details(BuildContext context) {
                                 color: re,
                               ),
                               label: alltext(
-                                  txt: "2 Proffesionals intrests",
+                                  txt: "${intrested} Proffesionals intrests",
                                   col: wh,
                                   siz: 12.sp,
                                   wei: FontWeight.w600,

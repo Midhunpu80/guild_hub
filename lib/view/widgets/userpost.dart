@@ -1,40 +1,20 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:job_socio/main.dart';
 import 'package:job_socio/view/utility/alltext.dart';
 import 'package:job_socio/view/utility/colors.dart';
 import 'package:job_socio/view/widgets/comments.dart';
-import 'package:job_socio/view/widgets/drawer.dart';
+
 import 'package:sizer/sizer.dart';
 
-Widget userpostimage(BuildContext context) {
-  return Card(
-    child: Container(
-      height: 61.h,
-      decoration: BoxDecoration(color: wh, boxShadow: [
-        BoxShadow(
-            offset: Offset.zero,
-            blurRadius: 5.5,
-            spreadRadius: 5,
-            color: gy.withOpacity(0.3))
-      ]),
-      child: Column(
-        children: [
-          posthead(),
-          Container(
-            height: 35.h,
-            width: 100.w,
-            color: yl,
-          ),
-          like_and_commentbar(context),
-          descriptionbar(),
-        ],
-      ),
-    ),
-  );
-}
+// Widget userpostimage(BuildContext context, var index) {
 
-like_and_commentbar(BuildContext context) {
+// }
+
+like_and_commentbar(
+    {required BuildContext context,
+    var ind,
+    required var likes,
+    required var commentsa}) {
   return Container(
     height: 7.h,
     color: wh,
@@ -49,7 +29,14 @@ like_and_commentbar(BuildContext context) {
                   radius: 19,
                   backgroundColor: gy.withOpacity(0.3),
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        question_controll.likequestions(
+                            postid: question_controll.allquestionList[ind]
+                                    ["postid"]
+                                .toString(),
+                            userid: question_controll.allquestionList[ind]["id"]
+                                .toString());
+                      },
                       icon: Icon(
                         Icons.favorite_outline,
                         size: 2.h,
@@ -59,7 +46,11 @@ like_and_commentbar(BuildContext context) {
                 width: 2.w,
               ),
               alltext(
-                  txt: "20", col: bl, siz: 9.sp, wei: FontWeight.bold, max: 1)
+                  txt: likes.toString(),
+                  col: bl,
+                  siz: 9.sp,
+                  wei: FontWeight.bold,
+                  max: 1)
             ],
           ),
           SizedBox(
@@ -72,7 +63,7 @@ like_and_commentbar(BuildContext context) {
                   backgroundColor: gy.withOpacity(0.3),
                   child: IconButton(
                       onPressed: () {
-                        comments(context: context);
+                        commentsmessenger(context);
                       },
                       icon: Icon(
                         Icons.messenger_outline_outlined,
@@ -83,7 +74,11 @@ like_and_commentbar(BuildContext context) {
                 width: 2.w,
               ),
               alltext(
-                  txt: "20", col: bl, siz: 9.sp, wei: FontWeight.bold, max: 1)
+                  txt: commentsa.toString(),
+                  col: bl,
+                  siz: 9.sp,
+                  wei: FontWeight.bold,
+                  max: 1)
             ],
           ),
           Spacer(),
@@ -103,16 +98,12 @@ like_and_commentbar(BuildContext context) {
   );
 }
 
-Widget descriptionbar() {
+Widget descriptionbar({required var des}) {
   return Container(
     height: 10.h,
     width: 100.w,
     //  decoration: BoxDecoration(),
     child: alltext(
-        txt: "container" * 290,
-        col: bl,
-        siz: 8.sp,
-        wei: FontWeight.w400,
-        max: 8),
+        txt: des.toString(), col: bl, siz: 8.sp, wei: FontWeight.w400, max: 8),
   );
 }
